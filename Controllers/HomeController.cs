@@ -1,4 +1,4 @@
-﻿using Ciont_Cristian_Lab2.Models;
+﻿using LibraryModel.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -7,7 +7,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Ciont_Cristian_Lab2.Data;
+using LibraryModel.Data;
 using Ciont_Cristian_Lab2.Models.LibraryViewModels;
 
 namespace Ciont_Cristian_Lab2.Controllers

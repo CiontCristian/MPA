@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Ciont_Cristian_Lab2.Models;
 
 namespace Ciont_Cristian_Lab2.Models.LibraryViewModels
 {

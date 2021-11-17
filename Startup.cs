@@ -9,7 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using Ciont_Cristian_Lab2.Data;
+using LibraryModel.Data;
 
 namespace Ciont_Cristian_Lab2
 {

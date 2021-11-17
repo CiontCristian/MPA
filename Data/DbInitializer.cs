@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Ciont_Cristian_Lab2.Models;
+using Ciont_Cristian_Lab2.Data;
 
 namespace Ciont_Cristian_Lab2.Data
 {
