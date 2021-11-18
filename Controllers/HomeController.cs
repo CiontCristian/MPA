@@ -30,6 +30,11 @@ namespace Ciont_Cristian_Lab2.Controllers
             return View();
         }
 
+        public IActionResult Chat()
+        {
+            return View();
+        }
+
         public async Task<ActionResult> Statistics()
         {
             IQueryable<OrderGroup> data =
