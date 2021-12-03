@@ -10,6 +10,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using LibraryModel.Data;
+using Ciont_Cristian_Lab2.Hubs;
+using Microsoft.AspNetCore.Identity;
 
 namespace Ciont_Cristian_Lab2
 {
@@ -27,6 +29,14 @@ namespace Ciont_Cristian_Lab2
         {
             services.AddControllersWithViews();
             services.AddDbContext<LibraryContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddSignalR();
+            services.Configure<IdentityOptions>(options => {
+                options.Password.RequiredLength = 8;
+            });
+            services.Configure<IdentityOptions>(options => {
+                options.Lockout.MaxFailedAccessAttempts = 3;              
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +56,7 @@ namespace Ciont_Cristian_Lab2
             app.UseStaticFiles();
 
             app.UseRouting();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -54,6 +64,8 @@ namespace Ciont_Cristian_Lab2
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+                endpoints.MapHub<ChatHub>("/chathub");
+                endpoints.MapRazorPages();
             });
         }
     }
