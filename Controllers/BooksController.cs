@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LibraryModel.Models;
 using LibraryModel.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Ciont_Cristian_Lab2.Controllers
 {
+    [Authorize(Roles = "Employee")]
     public class BooksController : Controller
     {
         private readonly LibraryContext _context;
@@ -19,7 +21,7 @@ namespace Ciont_Cristian_Lab2.Controllers
             _context = context;
         }
 
-        // GET: Books
+        [AllowAnonymous]
         public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? pageNumber)
         {
             ViewData["TitleSortParm"] = String.IsNullOrEmpty(sortOrder) ? "title_desc" : "";
@@ -62,7 +64,7 @@ namespace Ciont_Cristian_Lab2.Controllers
             return View(await PaginatedList<Book>.CreateAsync(books.AsNoTracking(), pageNumber ?? 1, pageSize));
         }
 
-        // GET: Books/Details/5
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)

@@ -36,6 +36,21 @@ namespace Ciont_Cristian_Lab2
             services.Configure<IdentityOptions>(options => {
                 options.Lockout.MaxFailedAccessAttempts = 3;              
             });
+            services.AddAuthorization(opts => {
+                opts.AddPolicy("OnlySales", policy => {
+                    policy.RequireClaim("Department", "Sales");
+                });
+                opts.AddPolicy("SalesManager", policy => {
+                    policy.RequireRole("Manager");
+                    policy.RequireClaim("Department", "Sales");
+                });
+            });
+            services.ConfigureApplicationCookie(opts =>
+            {
+                opts.AccessDeniedPath = "/Identity/Account/AccessDenied";
+
+            });
+            services.AddRazorPages();
 
         }
 
